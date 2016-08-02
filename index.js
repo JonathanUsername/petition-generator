@@ -14,7 +14,7 @@ var app = express();
 var getPetition = function getPetition() {
 	var prom = new Promise(function (resolve, reject) {
 		var actions = (0, _fs.createReadStream)('actions.suff.txt');
-		var random = (0, _child_process.spawn)('gsort', ['-R'], { stdio: ['pipe'] });
+		var random = (0, _child_process.spawn)('sort', ['-R'], { stdio: ['pipe'] });
 		var markov = (0, _child_process.spawn)('./markov');
 		actions.pipe(random.stdin);
 		random.stdout.pipe(markov.stdin);
@@ -69,6 +69,6 @@ app.get('/petition', function (req, res) {
 	});
 });
 
-app.listen(3333, function () {
-	console.log('Example app listening on port 3333!');
+app.listen(4567, function () {
+	console.log('Example app listening on port 4567!');
 });

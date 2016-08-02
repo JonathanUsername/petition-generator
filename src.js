@@ -11,7 +11,7 @@ const app = express();
 const getPetition = () => {
 	const prom = new Promise((resolve, reject) => {
 		const actions = createReadStream('actions.suff.txt')
-		const random = spawn('gsort', ['-R'], { stdio: ['pipe'] })
+		const random = spawn('sort', ['-R'], { stdio: ['pipe'] })
 		const markov = spawn('./markov');
 		actions.pipe(random.stdin);
 		random.stdout.pipe(markov.stdin);
@@ -80,6 +80,6 @@ app.get('/petition', function (req, res) {
 	});
 });
 
-app.listen(3333, function () {
-	console.log('Example app listening on port 3333!');
+app.listen(4567, function () {
+	console.log('Example app listening on port 4567!');
 });
